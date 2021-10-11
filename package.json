@@ -1,6 +1,6 @@
 {
   "name": "mobius-sim",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Mobius Spatial Information Model",
   "main": "index.js",
   "dependencies": {
