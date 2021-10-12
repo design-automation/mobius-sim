@@ -51,5 +51,9 @@
   "_moduleAliases": {
     "@libs": "libs",
     "@assets": "."
-  }
+  },
+  "keywords": [
+    "mobius",
+    "geo-info"
+  ]
 }
