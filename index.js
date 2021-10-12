@@ -20,10 +20,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports._parameterTypes = exports.InlineData = exports.Modules = void 0;
-const Modules = __importStar(require(".dist/core/modules/index"));
+const Modules = __importStar(require("./dist/core/modules/index"));
 exports.Modules = Modules;
-const InlineData = __importStar(require(".dist/core/inline/inline"));
+const InlineData = __importStar(require("./dist/core/inline/inline"));
 exports.InlineData = InlineData;
-const _parameterTypes = __importStar(require(".dist/core/_parameterTypes"));
+const _parameterTypes = __importStar(require("./dist/core/_parameterTypes"));
 exports._parameterTypes = _parameterTypes;
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLDhEQUFnRDtBQUl4QywwQkFBTztBQUhmLGlFQUFtRDtBQUdsQyxnQ0FBVTtBQUYzQix3RUFBMEQ7QUFFN0IsMENBQWUifQ==
