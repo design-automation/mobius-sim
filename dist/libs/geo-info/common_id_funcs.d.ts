@@ -1,0 +1,12 @@
+import { TId, EEntType, TEntTypeIdx } from './common';
+export declare function idMake(ent_type: EEntType, ent_i: number): TId;
+export declare function idsMake(ents: TEntTypeIdx | TEntTypeIdx[] | TEntTypeIdx[][]): TId | TId[] | TId[][];
+export declare function idsMakeFromIdxs(ent_type: EEntType, idxs: number | number[] | number[][]): TId | TId[] | TId[][];
+export declare function idBreak(id: TId): TEntTypeIdx;
+export declare function idsBreak(id: TId | TId[] | TId[][] | TId[][][]): TEntTypeIdx | TEntTypeIdx[] | TEntTypeIdx[][] | TEntTypeIdx[][][];
+export declare function getEntIdxs(ents_arr: TEntTypeIdx[]): number[];
+export declare function isTopo(ent_type: EEntType): boolean;
+export declare function isObj(ent_type: EEntType): boolean;
+export declare function isDim0(ent_type: EEntType): boolean;
+export declare function isDim1(ent_type: EEntType): boolean;
+export declare function isDim2(ent_type: EEntType): boolean;

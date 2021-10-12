@@ -20,7 +20,6 @@
     "jszip": "^3.4.0",
     "lodash": "^4.17.21",
     "mathjs": "^5.10.3",
-    "module-alias": "^2.2.2",
     "proj4": "^2.5.0",
     "three": "^0.131.3",
     "underscore": "^1.13.1"
@@ -48,10 +47,6 @@
     "url": "https://github.com/design-automation/mobius-sim/issues"
   },
   "homepage": "https://github.com/design-automation/mobius-sim#readme",
-  "_moduleAliases": {
-    "@libs": "libs",
-    "@assets": "."
-  },
   "keywords": [
     "mobius",
     "geo-info"
