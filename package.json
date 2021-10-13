@@ -1,6 +1,6 @@
 {
   "name": "@design-automation/mobius-sim",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Mobius Spatial Information Model",
   "main": "index.js",
   "dependencies": {
@@ -17,7 +17,6 @@
     "jszip": "^3.4.0",
     "lodash": "^4.17.21",
     "mathjs": "^5.10.3",
-    "node-fetch": "^3.0.0",
     "proj4": "^2.5.0",
     "three": "^0.131.3",
     "underscore": "^1.13.1"
@@ -26,8 +25,6 @@
     "@types/chroma-js": "^1.4.1",
     "@types/circular-json": "^0.4.0",
     "@types/lodash": "^4.14.175",
-    "@types/node": "^11.13.4",
-    "@types/node-fetch": "^2.5.5",
     "@types/three": "^0.130.0",
     "@types/underscore": "^1.8.14",
     "@types/webgl2": "0.0.5",

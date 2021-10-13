@@ -17,7 +17,6 @@ import { TId, EEntType, TEntTypeIdx, IEntSets, Txyz, Txy, TAttribDataTypes } fro
 import { idsMake, idsBreak, idsMakeFromIdxs, idMake } from '@assets/libs/geo-info/common_id_funcs';
 import { arrMakeFlat, getArrDepth } from '@assets/libs/util/arrs';
 import JSZip from 'jszip';
-import fetch from 'node-fetch';
 import { exportGltf } from '@assets/libs/geo-info/io/io_gltf';
 
 import { vecAng2, vecFromTo, vecRot } from '@assets/libs/geom/vectors';
