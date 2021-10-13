@@ -1,15 +1,11 @@
 {
   "name": "@design-automation/mobius-sim",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Mobius Spatial Information Model",
   "main": "index.js",
   "dependencies": {
     "@doodle3d/clipper-js": "^1.0.11",
-    "@types/d3-delaunay": "^4.1.0",
-    "@types/d3-polygon": "^1.0.7",
-    "@types/d3-voronoi": "^1.1.9",
     "chroma-js": "^2.0.3",
-    "circular-json": "^0.5.9",
     "cytoscape": "^3.14.1",
     "d3-delaunay": "^5.2.1",
     "d3-polygon": "^1.0.6",
@@ -23,7 +19,9 @@
   },
   "devDependencies": {
     "@types/chroma-js": "^1.4.1",
-    "@types/circular-json": "^0.4.0",
+    "@types/d3-delaunay": "^4.1.0",
+    "@types/d3-polygon": "^1.0.7",
+    "@types/d3-voronoi": "^1.1.9",
     "@types/lodash": "^4.14.175",
     "@types/three": "^0.130.0",
     "@types/underscore": "^1.8.14",
@@ -35,9 +33,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && tsc-alias",
-    "publish": "npm run build && npm publish --access public",
-    "moduleDocs": "npm run typedoc && node ./src/typedoc-json/docConvert.js && node version.js && npm run resizeImg",
-    "typedoc": "copy src\\typedoc-json\\__doc__.json src\\typedoc-json\\doc.json && typedoc --exclude **/*.spec.ts --json src/typedoc-json/doc.json src/core/modules"
+    "publ": "npm run build && npm publish --access public",
+    "moduleDocs": "npm run typedoc && node ./typedoc-json/docConvert.js",
+    "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/core/modules"
   },
   "repository": {
     "type": "git",
