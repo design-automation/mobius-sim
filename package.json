@@ -1,6 +1,6 @@
 {
   "name": "@design-automation/mobius-sim",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Mobius Spatial Information Model",
   "main": "index.js",
   "dependencies": {
@@ -23,6 +23,7 @@
     "@types/d3-polygon": "^1.0.7",
     "@types/d3-voronoi": "^1.1.9",
     "@types/lodash": "^4.14.175",
+    "@types/node": "^16.0.0",
     "@types/three": "^0.130.0",
     "@types/underscore": "^1.8.14",
     "@types/webgl2": "0.0.5",

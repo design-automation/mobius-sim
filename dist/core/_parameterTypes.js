@@ -3,16 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports._varString = exports._parameterTypes = void 0;
 const _model_1 = require("./modules/_model");
 const GIMetaData_1 = require("../libs/geo-info/GIMetaData");
+const common_1 = require("../libs/geo-info/common");
 exports._parameterTypes = {
+    // classes
+    newMeta: GIMetaData_1.GIMetaData,
     constList: '__constList__',
     model: '__model__',
     input: '__input__',
     console: '__console__',
     fileName: '__fileName__',
     new: '_model.__new__',
-    newFn: _model_1.__new__,
-    newMeta: GIMetaData_1.GIMetaData,
     merge: '_model.__merge__',
+    newFn: _model_1.__new__,
     mergeFn: _model_1.__merge__,
     cloneFn: _model_1.__clone__,
     addData: '_model.addGiData',
@@ -29,7 +31,9 @@ exports._parameterTypes = {
         'util.ModelMerge',
         'io.Write', 'io.Read',
         'io.Import', 'io.Export'
-    ]
+    ],
+    // longitude latitude in Singapore, NUS
+    LONGLAT: common_1.LONGLAT,
 };
 exports._varString = `PI = __modules__._constants.PI;
 XY = __modules__._constants.XY;
@@ -183,4 +187,4 @@ numToStr = __modules__._conversion.numToStr;
 rand = __modules__._rand.rand;
 randInt = __modules__._rand.randInt;
 randPick = __modules__._rand.randPick;`;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiX3BhcmFtZXRlclR5cGVzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL2NvcmUvX3BhcmFtZXRlclR5cGVzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLDZDQUErRDtBQUMvRCxpRUFBOEQ7QUFFakQsUUFBQSxlQUFlLEdBQUc7SUFDM0IsU0FBUyxFQUFFLGVBQWU7SUFDMUIsS0FBSyxFQUFFLFdBQVc7SUFDbEIsS0FBSyxFQUFFLFdBQVc7SUFDbEIsT0FBTyxFQUFFLGFBQWE7SUFDdEIsUUFBUSxFQUFFLGNBQWM7SUFFeEIsR0FBRyxFQUFFLGdCQUFnQjtJQUNyQixLQUFLLEVBQUUsZ0JBQU87SUFFZCxPQUFPLEVBQUUsdUJBQVU7SUFFbkIsS0FBSyxFQUFFLGtCQUFrQjtJQUN6QixPQUFPLEVBQUUsa0JBQVM7SUFDbEIsT0FBTyxFQUFFLGtCQUFTO0lBRWxCLE9BQU8sRUFBRSxrQkFBa0I7SUFFM0IsVUFBVSxFQUFFLHVCQUF1QjtJQUNuQyxXQUFXLEVBQUUsd0JBQXdCO0lBRXJDLFNBQVMsRUFBRSxZQUFZO0lBQ3ZCLFNBQVMsRUFBRSxZQUFZO0lBQ3ZCLFFBQVEsRUFBRSxXQUFXO0lBQ3JCLFdBQVcsRUFBRSxjQUFjO0lBRTNCLE1BQU0sRUFBRSxtQkFBbUI7SUFFM0IsTUFBTSxFQUFFLGdCQUFnQjtJQUV4QixVQUFVLEVBQUU7UUFDUixtQkFBbUI7UUFDbkIsaUJBQWlCO1FBQ2pCLFVBQVUsRUFBRSxTQUFTO1FBQ3JCLFdBQVcsRUFBRSxXQUFXO0tBQzNCO0NBQ0osQ0FBQztBQUVXLFFBQUEsVUFBVSxHQUN2Qjs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozt1Q0F1SnVDLENBQUMifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiX3BhcmFtZXRlclR5cGVzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL2NvcmUvX3BhcmFtZXRlclR5cGVzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLDZDQUErRDtBQUMvRCxpRUFBOEQ7QUFDOUQsa0RBQWdEO0FBRW5DLFFBQUEsZUFBZSxHQUFHO0lBQzNCLFVBQVU7SUFDVixPQUFPLEVBQUUsdUJBQVU7SUFFbkIsU0FBUyxFQUFFLGVBQWU7SUFDMUIsS0FBSyxFQUFFLFdBQVc7SUFDbEIsS0FBSyxFQUFFLFdBQVc7SUFDbEIsT0FBTyxFQUFFLGFBQWE7SUFDdEIsUUFBUSxFQUFFLGNBQWM7SUFFeEIsR0FBRyxFQUFFLGdCQUFnQjtJQUNyQixLQUFLLEVBQUUsa0JBQWtCO0lBRXpCLEtBQUssRUFBRSxnQkFBTztJQUNkLE9BQU8sRUFBRSxrQkFBUztJQUNsQixPQUFPLEVBQUUsa0JBQVM7SUFFbEIsT0FBTyxFQUFFLGtCQUFrQjtJQUUzQixVQUFVLEVBQUUsdUJBQXVCO0lBQ25DLFdBQVcsRUFBRSx3QkFBd0I7SUFFckMsU0FBUyxFQUFFLFlBQVk7SUFDdkIsU0FBUyxFQUFFLFlBQVk7SUFDdkIsUUFBUSxFQUFFLFdBQVc7SUFDckIsV0FBVyxFQUFFLGNBQWM7SUFFM0IsTUFBTSxFQUFFLG1CQUFtQjtJQUUzQixNQUFNLEVBQUUsZ0JBQWdCO0lBRXhCLFVBQVUsRUFBRTtRQUNSLG1CQUFtQjtRQUNuQixpQkFBaUI7UUFDakIsVUFBVSxFQUFFLFNBQVM7UUFDckIsV0FBVyxFQUFFLFdBQVc7S0FDM0I7SUFFRCx1Q0FBdUM7SUFDdkMsT0FBTyxFQUFFLGdCQUFPO0NBQ25CLENBQUM7QUFFVyxRQUFBLFVBQVUsR0FDdkI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7dUNBdUp1QyxDQUFDIn0=

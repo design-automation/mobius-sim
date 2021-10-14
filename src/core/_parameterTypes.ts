@@ -1,7 +1,11 @@
 import {__new__, __merge__, __clone__} from './modules/_model';
 import { GIMetaData } from '@assets/libs/geo-info/GIMetaData';
+import { LONGLAT } from '@libs/geo-info/common';
 
 export const _parameterTypes = {
+    // classes
+    newMeta: GIMetaData,
+
     constList: '__constList__',
     model: '__model__',
     input: '__input__',
@@ -9,11 +13,9 @@ export const _parameterTypes = {
     fileName: '__fileName__',
 
     new: '_model.__new__',
-    newFn: __new__,
-
-    newMeta: GIMetaData,
-
     merge: '_model.__merge__',
+
+    newFn: __new__,
     mergeFn: __merge__,
     cloneFn: __clone__,
 
@@ -36,7 +38,10 @@ export const _parameterTypes = {
         'util.ModelMerge',
         'io.Write', 'io.Read',
         'io.Import', 'io.Export'
-    ]
+    ],
+
+    // longitude latitude in Singapore, NUS
+    LONGLAT: LONGLAT,
 };
 
 export const _varString =
