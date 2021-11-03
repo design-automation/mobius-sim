@@ -28,7 +28,16 @@ export declare class GIGeomThreejs {
         Map<number, number>,
         number[],
         object[],
-        [number, number, number][]
+        [
+            number,
+            number,
+            number
+        ][],
+        [
+            number,
+            number,
+            number
+        ][]
     ];
     /**
      * Returns that data required for threejs edges.
@@ -44,6 +53,11 @@ export declare class GIGeomThreejs {
         Map<number, number>,
         number[],
         object[],
+        [
+            number,
+            number,
+            number
+        ][],
         [number, number, number][]
     ];
     /**
