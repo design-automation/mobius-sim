@@ -1,7 +1,7 @@
 import { TAttribDataTypes, EEntType,
     IAttribsMaps, EEntTypeStr, TModelAttribValuesArr } from '../common';
 import { GIModelData } from '../GIModelData';
-import * as lodash from 'lodash';
+import lodash from 'lodash';
 import { GIAttribMapBase } from '../attrib_classes/GIAttribMapBase';
 
 

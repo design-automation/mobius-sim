@@ -3,7 +3,7 @@ import { TAttribDataTypes, EEntType,
 import * as mathjs from 'mathjs';
 import { GIModelData } from '../GIModelData';
 import { GIAttribMapBase } from '../attrib_classes/GIAttribMapBase';
-import * as lodash from 'lodash';
+import lodash from 'lodash';
 
 /**
  * Class for attributes.
