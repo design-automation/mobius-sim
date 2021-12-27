@@ -1,5 +1,4 @@
 import { EAttribDataTypeStrs, TAttribDataTypes, IMetaData } from './common';
-import lodash from 'lodash';
 
 /**
  * Geo-info model metadata class.

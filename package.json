@@ -13,6 +13,9 @@
     "underscore": "^1.13.1"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@types/lodash": "^4.14.175",
     "@types/node": "^16.0.0",
     "@types/three": "^0.130.0",
@@ -26,7 +29,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && tsc-alias",
-    "rollup": "rollup build/index.js --file build/mobius-sim.module.es.js --format es",
+    "rollup": "rollup --config rollup.config.js",
     "deploy": "npm run build && npm run rollup && npm publish --access public",
     "moduleDocs": "npm run typedoc && node ./typedoc-json/docConvert.js",
     "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/core/modules"
