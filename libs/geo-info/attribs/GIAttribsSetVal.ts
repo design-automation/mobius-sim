@@ -1,6 +1,5 @@
 import { TAttribDataTypes, EEntType,
     EAttribDataTypeStrs, EAttribNames, EEntTypeStr, EAttribPush } from '../common';
-import * as mathjs from 'mathjs';
 import { GIModelData } from '../GIModelData';
 import { GIAttribMapBase } from '../attrib_classes/GIAttribMapBase';
 import lodash from 'lodash';
