@@ -1,0 +1,11 @@
+import * as three from 'three';
+declare type Txyz = [number, number, number];
+declare type TPlane = [Txyz, Txyz, Txyz];
+declare type TRay = [Txyz, Txyz];
+export declare function multMatrix(xyz: Txyz, m: three.Matrix4): Txyz;
+export declare function mirrorMatrix(plane: TPlane): three.Matrix4;
+export declare function rotateMatrix(ray: TRay, angle: number): three.Matrix4;
+export declare function scaleMatrix(plane: TPlane, factor: Txyz): three.Matrix4;
+export declare function xfromSourceTargetMatrix(source_plane: TPlane, target_plane: TPlane): three.Matrix4;
+export declare function xformMatrix(plane: TPlane, neg: boolean): three.Matrix4;
+export {};

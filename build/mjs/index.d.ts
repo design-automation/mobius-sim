@@ -4,6 +4,5 @@ export * from './geom/index';
 export * from './triangulate/index';
 export * from './util/index';
 export * from './TypedArrayUtils';
-
 import * as GICommon from './geo-info/common';
-export {GICommon};
+export { GICommon };

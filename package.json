@@ -1,15 +1,22 @@
 {
   "name": "@design-automation/mobius-sim",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Mobius Spatial Information Model",
-  "main": "build/index.js",
-  "module": "build/mobius-sim.module.es.js",
+  "main": "build/cjs/index.js",
+  "module": "build/mjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./build/mjs/index.js",
+      "require": "./build/cjs/index.js"
+    },
+    "./libs/verb/verb": "./libs/verb/verb.js"
+  },
   "dependencies": {
     "@doodle3d/clipper-js": "^1.0.11",
     "lodash": "^4.17.21",
     "mathjs": "^5.10.3",
     "proj4": "^2.5.0",
-    "three": "^0.131.3",
+    "three": "^0.133.1",
     "underscore": "^1.13.1"
   },
   "devDependencies": {
@@ -18,7 +25,7 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/lodash": "^4.14.175",
     "@types/node": "^16.0.0",
-    "@types/three": "^0.130.0",
+    "@types/three": "^0.133.1",
     "@types/underscore": "^1.8.14",
     "@types/webgl2": "0.0.5",
     "rollup": "^2.60.0",
@@ -28,9 +35,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && tsc-alias",
+    "build0": "tsc && tsc-alias",
+    "build": "npm run build-del && npm run build-mjs && npm run build-cjs && fixup.sh",
+    "build-del": "del /s /q build\\*",
+    "build-mjs": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "build-cjs": "tsc -p tsconfig-cjs.json && tsc-alias -p tsconfig-cjs.json",
     "rollup": "rollup --config rollup.config.js",
-    "deploy": "npm run build && npm run rollup && npm publish --access public",
+    "deploy": "npm run build && npm publish --access public",
     "moduleDocs": "npm run typedoc && node ./typedoc-json/docConvert.js",
     "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/core/modules"
   },
