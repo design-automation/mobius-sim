@@ -1,9 +1,9 @@
-import { distance } from '@libs/geom/distance';
-import { interpByLen, interpByNum } from '@libs/geom/vectors';
-import { TypedArrayUtils } from '@libs/TypedArrayUtils';
-import { getArrDepth } from '@libs/util/arrs';
 import * as THREE from 'three';
 
+import { distance } from '../../geom/distance';
+import { interpByLen, interpByNum } from '../../geom/vectors';
+import { TypedArrayUtils } from '../../TypedArrayUtils';
+import { getArrDepth } from '../../util/arrs';
 import { EEntType, IEntSets, TEntTypeIdx, Txyz } from '../common';
 import { GIModelData } from '../GIModelData';
 

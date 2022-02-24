@@ -1,6 +1,8 @@
 import * as THREE from 'three';
-import { GIModel } from '@libs/geo-info/GIModel';
-import { TEntTypeIdx, EEntType, Txyz } from '../geo-info/common';
+
+import { EEntType, TEntTypeIdx, Txyz } from '../geo-info/common';
+import { GIModel } from '../geo-info/GIModel';
+
 //
 export function createSingleMeshBufTjs
         (__model__: GIModel, ents_arrs: TEntTypeIdx[]):

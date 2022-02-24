@@ -1,4 +1,4 @@
-import { vecCross, vecDiv, vecFromTo } from '@libs/geom/vectors';
+import { vecCross, vecDiv, vecFromTo } from '../../geom/vectors';
 import { EAttribNames, EEntType, EEntTypeStr } from '../common';
 import { mapSetMerge } from '../common_func';
 /**

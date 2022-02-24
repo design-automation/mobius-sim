@@ -1,6 +1,6 @@
 {
   "name": "@design-automation/mobius-sim",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Mobius Spatial Information Model",
   "main": "build/cjs/index.js",
   "module": "build/mjs/index.js",
@@ -29,7 +29,7 @@
     "@types/underscore": "^1.8.14",
     "@types/webgl2": "0.0.5",
     "rollup": "^2.60.0",
-    "tsc-alias": "^1.3.10",
+    "tsc-alias": "^1.6.2",
     "typedoc": "^0.22.5",
     "typescript": "^4.4.3"
   },
@@ -38,8 +38,8 @@
     "build0": "tsc && tsc-alias",
     "build": "npm run build-del && npm run build-mjs && npm run build-cjs && fixup.sh",
     "build-del": "del /s /q build\\*",
-    "build-mjs": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
-    "build-cjs": "tsc -p tsconfig-cjs.json && tsc-alias -p tsconfig-cjs.json",
+    "build-mjs": "tsc -p tsconfig-mjs.json",
+    "build-cjs": "tsc -p tsconfig-cjs.json",
     "rollup": "rollup --config rollup.config.js",
     "deploy": "npm run build && npm publish --access public",
     "moduleDocs": "npm run typedoc && node ./typedoc-json/docConvert.js",

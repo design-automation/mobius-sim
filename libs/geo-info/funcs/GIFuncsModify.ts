@@ -1,8 +1,9 @@
+import * as THREE from 'three';
+
 import { mirrorMatrix, multMatrix, rotateMatrix, scaleMatrix, xfromSourceTargetMatrix } from '../../geom/matrix';
 import { vecAdd, vecCross, vecDiv, vecDot, vecFromTo, vecLen, vecNorm, vecSetLen, vecSum } from '../../geom/vectors';
-import { EEntType, Txyz, TEntTypeIdx, TPlane, TRay } from '../common';
-import * as THREE from 'three';
-import { getArrDepth } from '@libs/util/arrs';
+import { getArrDepth } from '../../util/arrs';
+import { EEntType, TEntTypeIdx, TPlane, TRay, Txyz } from '../common';
 import { GIModelData } from '../GIModelData';
 
 

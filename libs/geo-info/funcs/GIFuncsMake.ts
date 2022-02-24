@@ -1,13 +1,14 @@
+import lodash from 'lodash';
+import * as THREE from 'three';
+
+import { distance } from '../../geom/distance';
 import { multMatrix, xfromSourceTargetMatrix } from '../../geom/matrix';
 import { vecAdd, vecCross, vecDiv, vecFromTo, vecMult } from '../../geom/vectors';
-import { EEntType, Txyz, TEntTypeIdx, TPlane, EAttribNames, EAttribDataTypeStrs, TAttribDataTypes } from '../common';
-import * as THREE from 'three';
-import { getEntIdxs, isDim0, isDim2 } from '../common_id_funcs';
-import { getArrDepth } from '@libs/util/arrs';
-import { GIModelData } from '../GIModelData';
-import { distance } from '@libs/geom/distance';
+import { getArrDepth } from '../../util/arrs';
 import { GIAttribMapBase } from '../attrib_classes/GIAttribMapBase';
-import lodash from 'lodash';
+import { EAttribNames, EEntType, TAttribDataTypes, TEntTypeIdx, TPlane, Txyz } from '../common';
+import { getEntIdxs, isDim0, isDim2 } from '../common_id_funcs';
+import { GIModelData } from '../GIModelData';
 
 // Enums
 export enum _EClose {

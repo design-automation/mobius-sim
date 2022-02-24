@@ -1,4 +1,4 @@
-import { Txyz, TEntTypeIdx, TPlane, TRay } from '../common';
+import { TEntTypeIdx, TPlane, TRay, Txyz } from '../common';
 import { GIModelData } from '../GIModelData';
 /**
  * Class for transforming geometry: move, rotate, mirror, scale, xform.

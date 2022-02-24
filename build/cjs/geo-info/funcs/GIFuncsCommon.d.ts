@@ -1,4 +1,4 @@
-import { Txyz, TEntTypeIdx, TPlane } from '../common';
+import { TEntTypeIdx, TPlane, Txyz } from '../common';
 import { GIModelData } from '../GIModelData';
 /**
  * Class for editing geometry.
