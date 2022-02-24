@@ -1,7 +1,7 @@
 import { vecAdd, vecCross, vecDiv, vecDot, vecFromTo, vecLen, vecNorm, vecSetLen, vecSum } from '../../geom/vectors';
 import { EEntType } from '../common';
 import * as THREE from 'three';
-import { getArrDepth } from '../../util/arrs';
+import { getArrDepth } from '@libs/util/arrs';
 const EPS = 1e-8;
 /**
  * Class for editing geometry.

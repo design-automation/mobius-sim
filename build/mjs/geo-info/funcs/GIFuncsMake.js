@@ -3,8 +3,8 @@ import { vecAdd, vecCross, vecDiv, vecFromTo, vecMult } from '../../geom/vectors
 import { EEntType, EAttribNames } from '../common';
 import * as THREE from 'three';
 import { getEntIdxs, isDim0, isDim2 } from '../common_id_funcs';
-import { getArrDepth } from '../../util/arrs';
-import { distance } from '../../geom/distance';
+import { getArrDepth } from '@libs/util/arrs';
+import { distance } from '@libs/geom/distance';
 import lodash from 'lodash';
 // Enums
 export var _EClose;

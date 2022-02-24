@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.importGeojson = exports.exportGeojson = void 0;
 const common_1 = require("../common");
-const arrs_1 = require("../../util/arrs");
+const arrs_1 = require("@libs/util/arrs");
 const proj4_1 = __importDefault(require("proj4"));
 const vectors_1 = require("../../geom/vectors");
 const matrix_1 = require("../../geom/matrix");

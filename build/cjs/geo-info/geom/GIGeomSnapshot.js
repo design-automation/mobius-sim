@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GIGeomSnapshot = void 0;
-const vectors_1 = require("../../geom/vectors");
+const vectors_1 = require("@libs/geom/vectors");
 const common_1 = require("../common");
 const common_func_1 = require("../common_func");
 /**

@@ -4,7 +4,7 @@ exports.GIFuncsModify = void 0;
 const matrix_1 = require("../../geom/matrix");
 const vectors_1 = require("../../geom/vectors");
 const common_1 = require("../common");
-const arrs_1 = require("../../util/arrs");
+const arrs_1 = require("@libs/util/arrs");
 /**
  * Class for transforming geometry: move, rotate, mirror, scale, xform.
  */

@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.exportDae = exports.importDae = void 0;
 const GIModel_1 = require("../GIModel");
 const common_1 = require("../common");
-const triangle_1 = require("../../geom/triangle");
-const distance_1 = require("../../geom/distance");
+const triangle_1 = require("@libs/geom/triangle");
+const distance_1 = require("@libs/geom/distance");
 /**
  * Import obj
  */

@@ -1,7 +1,7 @@
 import { mirrorMatrix, multMatrix, rotateMatrix, scaleMatrix, xfromSourceTargetMatrix } from '../../geom/matrix';
 import { vecAdd, vecCross, vecDiv, vecDot, vecFromTo, vecLen, vecNorm, vecSetLen, vecSum } from '../../geom/vectors';
 import { EEntType } from '../common';
-import { getArrDepth } from '../../util/arrs';
+import { getArrDepth } from '@libs/util/arrs';
 /**
  * Class for transforming geometry: move, rotate, mirror, scale, xform.
  */

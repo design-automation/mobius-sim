@@ -1,6 +1,6 @@
 {
   "name": "@design-automation/mobius-sim",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Mobius Spatial Information Model",
   "main": "build/cjs/index.js",
   "module": "build/mjs/index.js",

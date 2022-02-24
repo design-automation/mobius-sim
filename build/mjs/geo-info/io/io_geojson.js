@@ -1,5 +1,5 @@
 import { EEntType, LONGLAT } from '../common';
-import { getArrDepth } from '../../util/arrs';
+import { getArrDepth } from '@libs/util/arrs';
 import proj4 from 'proj4';
 import { vecAng2, vecDot } from '../../geom/vectors';
 import { rotateMatrix, multMatrix } from '../../geom/matrix';

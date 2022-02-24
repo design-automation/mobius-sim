@@ -28,8 +28,8 @@ const vectors_1 = require("../../geom/vectors");
 const common_1 = require("../common");
 const THREE = __importStar(require("three"));
 const common_id_funcs_1 = require("../common_id_funcs");
-const arrs_1 = require("../../util/arrs");
-const distance_1 = require("../../geom/distance");
+const arrs_1 = require("@libs/util/arrs");
+const distance_1 = require("@libs/geom/distance");
 const lodash_1 = __importDefault(require("lodash"));
 // Enums
 var _EClose;

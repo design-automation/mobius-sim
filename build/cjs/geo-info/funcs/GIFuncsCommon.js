@@ -23,7 +23,7 @@ exports.GIFuncsCommon = void 0;
 const vectors_1 = require("../../geom/vectors");
 const common_1 = require("../common");
 const THREE = __importStar(require("three"));
-const arrs_1 = require("../../util/arrs");
+const arrs_1 = require("@libs/util/arrs");
 const EPS = 1e-8;
 /**
  * Class for editing geometry.
