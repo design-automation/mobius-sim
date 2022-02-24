@@ -1,10 +1,11 @@
-import { interpByNum, interpByLen } from '@libs/geom/vectors';
-import { EEntType, Txyz, TEntTypeIdx, IEntSets } from '../common';
 import { distance } from '@libs/geom/distance';
+import { interpByLen, interpByNum } from '@libs/geom/vectors';
+import { TypedArrayUtils } from '@libs/TypedArrayUtils';
 import { getArrDepth } from '@libs/util/arrs';
-import { GIModelData } from '../GIModelData';
-import { TypedArrayUtils } from '@libs/TypedArrayUtils.js';
 import * as THREE from 'three';
+
+import { EEntType, IEntSets, TEntTypeIdx, Txyz } from '../common';
+import { GIModelData } from '../GIModelData';
 
 // Enums
 export enum _ERingMethod {
