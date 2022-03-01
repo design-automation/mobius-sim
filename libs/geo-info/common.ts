@@ -245,6 +245,11 @@ export interface ISnapshotData {
     co_ch: Map<number, Set<number>>;
     co_pa: Map<number, number>;
 }
+
+// ================================================================================================
+// GI RENUM
+// ================================================================================================
+
 export interface IRenumMaps {
     posis: Map<number, number>;
     verts: Map<number, number>;
@@ -256,8 +261,9 @@ export interface IRenumMaps {
     pgons: Map<number, number>;
     colls: Map<number, number>;
 }
+
 // ================================================================================================
-// JSON MODEL DATA
+// GI JSON MODEL DATA
 // ================================================================================================
 
 export interface IModelJSONData {
@@ -266,7 +272,6 @@ export interface IModelJSONData {
     geometry: IGeomJSONData;
     attributes: IAttribsJSONData;
 }
-
 export interface IGeomJSONData {
     num_posis: number;
     verts: TVert[];
@@ -283,11 +288,6 @@ export interface IGeomJSONData {
     coll_childs: number[][];
     selected: Map<Number, TEntTypeIdx[]>;
 }
-export interface IAttribJSONData {
-    name: string;
-    data_type: EAttribDataTypeStrs;
-    data: TEntAttribValuesArr;
-}
 export interface IAttribsJSONData {
     posis: IAttribJSONData[];
     verts: IAttribJSONData[];
@@ -299,6 +299,70 @@ export interface IAttribsJSONData {
     colls: IAttribJSONData[];
     model: TModelAttribValuesArr;
 }
+export interface IAttribJSONData {
+    name: string;
+    data_type: EAttribDataTypeStrs;
+    data: TEntAttribValuesArr;
+}
 
 export type TEntAttribValuesArr = Array<[TAttribDataTypes, number[]]>;
 export type TModelAttribValuesArr = Array<[string, TAttribDataTypes]>;
+
+// ================================================================================================
+// SIM RENUM
+// ================================================================================================
+
+export interface ISIMRenumMaps {
+    posis: Map<number, number>;
+    verts: Map<number, number>;
+    edges: Map<number, number>;
+    wires: Map<number, number>;
+    points: Map<number, number>;
+    plines: Map<number, number>;
+    pgons: Map<number, number>;
+    colls: Map<number, number>;
+}
+
+// ================================================================================================
+// SIM JSON MODEL DATA
+// ================================================================================================
+
+export interface IModelSIMData {
+    type: string;
+    version: string;
+    geometry: IGeomSIMData;
+    attributes: IAttribsSIMData;
+}
+export interface IGeomSIMData {
+    num_posis: number;
+    verts: TVert[];
+    edges: TEdge[];
+    wires: TWire[];
+    points: TPoint[];
+    plines: TPline[];
+    pgons: TPgon[];
+    coll_pgons: number[][];
+    coll_plines: number[][];
+    coll_points: number[][];
+    coll_childs: number[][];
+}
+export interface IAttribsSIMData {
+    posis: IAttribSIMData[];
+    verts: IAttribSIMData[];
+    edges: IAttribSIMData[];
+    wires: IAttribSIMData[];
+    points: IAttribSIMData[];
+    plines: IAttribSIMData[];
+    pgons: IAttribSIMData[];
+    colls: IAttribSIMData[];
+    model: TModelAttribValuesArr;
+}
+// export type TModelAttribValuesArr = Array<[string, TAttribDataTypes]>;
+export interface IAttribSIMData {
+    name: string;
+    data_type: EAttribDataTypeStrs;
+    data_vals: TAttribValuesArr;
+    data_ents: TAttribEntsArr;
+}
+export type TAttribValuesArr = Array<TAttribDataTypes>;
+export type TAttribEntsArr = Array<number[]>;

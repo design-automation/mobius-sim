@@ -12,6 +12,7 @@ import { GIModelData } from '../GIModelData';
 import { GIGeomSnapshot } from './GIGeomSnapshot';
 import { GIGeomThreejs } from './GIGeomThreejs';
 import { GIGeomImpExp } from './GIGeomImpExp';
+import { SIMGeomImpExp } from './SIMGeomImpExp';
 import { GIGeomNavTri } from './GIGeomNavTri';
 import { GIGeomNavSnapshot } from './GIGeomNavSnapshot';
 
@@ -43,6 +44,7 @@ export class GIGeom {
     };
     // sub classes with methods
     public imp_exp: GIGeomImpExp;
+    public sim_imp_exp: SIMGeomImpExp;
     public add: GIGeomAdd;
     public del_vert: GIGeomDelVert;
     public edit_topo: GIGeomEditTopo;
@@ -62,6 +64,7 @@ export class GIGeom {
     constructor(modeldata: GIModelData) {
         this.modeldata = modeldata;
         this.imp_exp = new GIGeomImpExp(modeldata, this._geom_maps);
+        this.sim_imp_exp = new SIMGeomImpExp(modeldata, this._geom_maps);
         this.add = new GIGeomAdd(modeldata, this._geom_maps);
         this.del_vert = new GIGeomDelVert(modeldata, this._geom_maps);
         this.edit_topo = new GIGeomEditTopo(modeldata, this._geom_maps);

@@ -195,6 +195,19 @@ export class GIModel {
         return JSON.stringify(this.modeldata.exportGI(ents));
     }
     /**
+     * Import a SIM model.
+     * @param meta
+     */
+    public importSIM(model_json_data_str: string): TEntTypeIdx[] {
+        return this.modeldata.importSIM(JSON.parse(model_json_data_str));
+    }
+    /**
+     * Export a SIM model.
+     */
+    public exportSIM(ents: TEntTypeIdx[]): string {
+        return JSON.stringify(this.modeldata.exportSIM(ents));
+    }
+    /**
      * Set the meta data object.
      * Data is not copied.
      * @param meta

@@ -66,16 +66,18 @@ export class GIGeomEditPgon {
             const new_tris_i: number[] = this.modeldata.geom.add._addTris(outer_i, holes_i);
             // delete the old trianges
             const old_pgon_tris_i: number[] = this._geom_maps.dn_pgons_tris.get(pgon_i);
-            for (const old_face_tri_i of old_pgon_tris_i) {
-                // verts to tris
-                for (const vert_i of this._geom_maps.dn_tris_verts.get(old_face_tri_i)) {
-                    const vert_tris_i: number[] = this._geom_maps.up_verts_tris.get(vert_i);
-                    arrRem(vert_tris_i, old_face_tri_i);
+            if (old_pgon_tris_i) {
+                for (const old_face_tri_i of old_pgon_tris_i) {
+                    // verts to tris
+                    for (const vert_i of this._geom_maps.dn_tris_verts.get(old_face_tri_i)) {
+                        const vert_tris_i: number[] = this._geom_maps.up_verts_tris.get(vert_i);
+                        arrRem(vert_tris_i, old_face_tri_i);
+                    }
+                    // tris to verts
+                    this._geom_maps.dn_tris_verts.delete(old_face_tri_i);
+                    // tris to faces
+                    this._geom_maps.up_tris_pgons.delete(old_face_tri_i);
                 }
-                // tris to verts
-                this._geom_maps.dn_tris_verts.delete(old_face_tri_i);
-                // tris to faces
-                this._geom_maps.up_tris_pgons.delete(old_face_tri_i);
             }
             // update up array for tri to pgon
             for (const new_tri_i of new_tris_i) {

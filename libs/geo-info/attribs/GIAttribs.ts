@@ -6,6 +6,7 @@ import { GIModelData } from '../GIModelData';
 import { GIAttribsSnapshot } from './GIAttribsSnapshot';
 import { GIAttribsThreejs } from './GIAttribsThreejs';
 import { GIAttribsImpExp } from './GIAttribsImpExp';
+import { SIMAttribsImpExp } from './SIMAttribsImpExp';
 import { GIAttribMapBase } from '../attrib_classes/GIAttribMapBase';
 import { GIAttribsDel } from './GIAttribsDel';
 import { GIAttribsGetVal } from './GIAttribsGetVal';
@@ -26,6 +27,7 @@ export class GIAttribs {
     // sub classes with methods
     public merge: GIAttribsMerge;
     public imp_exp: GIAttribsImpExp;
+    public sim_imp_exp: SIMAttribsImpExp;
     public add: GIAttribsAdd;
     public del: GIAttribsDel;
     public get: GIAttribsGetVal;
@@ -44,6 +46,7 @@ export class GIAttribs {
         this.modeldata = modeldata;
         this.merge = new GIAttribsMerge(modeldata);
         this.imp_exp = new GIAttribsImpExp(modeldata);
+        this.sim_imp_exp = new SIMAttribsImpExp(modeldata);
         this.add = new GIAttribsAdd(modeldata);
         this.del = new GIAttribsDel(modeldata);
         this.get = new GIAttribsGetVal(modeldata);

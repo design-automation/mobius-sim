@@ -1,6 +1,7 @@
 import { GIGeom } from './geom/GIGeom';
 import { GIAttribs } from './attribs/GIAttribs';
-import { IModelJSONData, EEntType, EAttribNames, TEntTypeIdx, IEntSets, IRenumMaps } from './common';
+import { IModelJSONData, EEntType, EAttribNames, TEntTypeIdx, IEntSets, IRenumMaps, ISIMRenumMaps } from './common';
+import { IModelSIMData } from './common';
 import { GIModelComparator } from './GIModelComparator';
 import { GIModel } from './GIModel';
 import { GIModelThreejs } from './GIModelThreejs';
@@ -102,6 +103,69 @@ export class GIModelData {
             version: '0.7',
             geometry: this.geom.imp_exp.exportGI(ent_sets, renum_maps),
             attributes: this.attribs.imp_exp.exportGI(ent_sets, renum_maps)
+        };
+    }
+
+    /**
+     * Imports a model in the SIM format
+     * Existing data in the model is not affected.
+     * @param model_data The SIM JSON data.
+     */
+     public importSIM(model_data: IModelSIMData): TEntTypeIdx[] {
+        if (model_data.version !== '0.1') {
+            if (model_data.version === undefined) {
+                throw new Error(
+                    'Importing SIM data from with incorrect version.' +
+                    'The data being imported was generated in an old version of Mobius Modeller.' +
+                    'SIM data should be generated using Mobius Modeller version 0.9 or later.'
+                );
+            }
+            throw new Error(
+                'Importing SIM data from with incorrect version.' +
+                'GI data should be generated using Mobius Modeller version 0.9 or later.'
+            );
+        }
+        // get the renum maps for the imprted data
+        const renum_maps: ISIMRenumMaps = this.geom.sim_imp_exp.importSIMRenum(model_data.geometry);
+        // import the data
+        this.geom.sim_imp_exp.importSIM(model_data.geometry, renum_maps);
+        this.attribs.sim_imp_exp.importSIM(model_data.attributes, renum_maps);
+        // triangulate
+        renum_maps.pgons.forEach( (new_ent_i, _) => this.geom.edit_pgon.triPgons(new_ent_i) );
+        // get the new ents to return
+        const ents: TEntTypeIdx[] = [];
+        renum_maps.points.forEach( (new_ent_i, _) => ents.push([EEntType.POINT, new_ent_i]) );
+        renum_maps.plines.forEach( (new_ent_i, _) => ents.push([EEntType.PLINE, new_ent_i]) );
+        renum_maps.pgons.forEach( (new_ent_i, _) => ents.push([EEntType.PGON, new_ent_i]) );
+        renum_maps.colls.forEach( (new_ent_i, _) => ents.push([EEntType.COLL, new_ent_i]) );
+        // return the new ents that have been imported
+        return ents;
+    }
+    /**
+     * Exports the model in the SIM format.
+     */
+     public exportSIM(ents: TEntTypeIdx[]): IModelSIMData {
+        // get the ents to export
+        let ent_sets: IEntSets;
+        if (ents === null) {
+            ent_sets = this.geom.snapshot.getAllEntSets(this.active_ssid);
+        } else {
+            ent_sets = this.geom.snapshot.getSubEntsSets(this.active_ssid, ents);
+            // the getSubEntsSets() function creates two sets of posis
+            // isolated posis and obj posis
+            // in this case, we need a single list
+            for (const posi_i of ent_sets.obj_ps) {
+                ent_sets.ps.add(posi_i);
+            }
+        }
+        this.geom.snapshot.addTopoToSubEntsSets(ent_sets);
+        // get the renum maps
+        const renum_maps: ISIMRenumMaps = this.geom.sim_imp_exp.exportSIMRenum(ent_sets);
+        return {
+            type: 'SIM',
+            version: '0.1',
+            geometry: this.geom.sim_imp_exp.exportSIM(ent_sets, renum_maps),
+            attributes: this.attribs.sim_imp_exp.exportSIM(ent_sets, renum_maps)
         };
     }
     /**
