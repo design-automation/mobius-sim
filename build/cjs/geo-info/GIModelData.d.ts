@@ -1,6 +1,7 @@
 import { GIGeom } from './geom/GIGeom';
 import { GIAttribs } from './attribs/GIAttribs';
 import { IModelJSONData, EEntType, TEntTypeIdx } from './common';
+import { IModelSIMData } from './common';
 import { GIModelComparator } from './GIModelComparator';
 import { GIModel } from './GIModel';
 import { GIModelThreejs } from './GIModelThreejs';
@@ -38,6 +39,16 @@ export declare class GIModelData {
      * Exports the JSON data for this model.
      */
     exportGI(ents: TEntTypeIdx[]): IModelJSONData;
+    /**
+     * Imports a model in the SIM format
+     * Existing data in the model is not affected.
+     * @param model_data The SIM JSON data.
+     */
+    importSIM(model_data: IModelSIMData): TEntTypeIdx[];
+    /**
+     * Exports the model in the SIM format.
+     */
+    exportSIM(ents: TEntTypeIdx[]): IModelSIMData;
     /**
      * Check model for internal consistency
      */

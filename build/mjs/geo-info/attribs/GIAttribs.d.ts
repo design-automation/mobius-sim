@@ -6,6 +6,7 @@ import { GIModelData } from '../GIModelData';
 import { GIAttribsSnapshot } from './GIAttribsSnapshot';
 import { GIAttribsThreejs } from './GIAttribsThreejs';
 import { GIAttribsImpExp } from './GIAttribsImpExp';
+import { SIMAttribsImpExp } from './SIMAttribsImpExp';
 import { GIAttribMapBase } from '../attrib_classes/GIAttribMapBase';
 import { GIAttribsDel } from './GIAttribsDel';
 import { GIAttribsGetVal } from './GIAttribsGetVal';
@@ -21,6 +22,7 @@ export declare class GIAttribs {
     attribs_maps: Map<number, IAttribsMaps>;
     merge: GIAttribsMerge;
     imp_exp: GIAttribsImpExp;
+    sim_imp_exp: SIMAttribsImpExp;
     add: GIAttribsAdd;
     del: GIAttribsDel;
     get: GIAttribsGetVal;

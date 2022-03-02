@@ -1,4 +1,4 @@
-import { EFilterOperatorTypes, EAttribDataTypeStrs, TAttribDataTypes, IAttribJSONData, EEntType } from '../common';
+import { EFilterOperatorTypes, EAttribDataTypeStrs, TAttribDataTypes, IAttribJSONData, EEntType, IAttribSIMData } from '../common';
 import { GIModelData } from '../GIModelData';
 /**
  * Geo-info attribute class for one attribute.
@@ -34,6 +34,12 @@ export declare class GIAttribMapBase {
      * If entset is null, then all ents are included.
      */
     getJSONData(ent_set?: Set<number>): IAttribJSONData;
+    /**
+     * Returns the SIM data for this attribute.
+     * Returns null if there is no data.
+     * If entset is null, then all ents are included.
+     */
+    getSIMData(ent_set?: Set<number>): IAttribSIMData;
     /**
      * Gets the name of this attribute.
      */

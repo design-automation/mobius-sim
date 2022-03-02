@@ -12,6 +12,7 @@ import { GIModelData } from '../GIModelData';
 import { GIGeomSnapshot } from './GIGeomSnapshot';
 import { GIGeomThreejs } from './GIGeomThreejs';
 import { GIGeomImpExp } from './GIGeomImpExp';
+import { SIMGeomImpExp } from './SIMGeomImpExp';
 import { GIGeomNavTri } from './GIGeomNavTri';
 import { GIGeomNavSnapshot } from './GIGeomNavSnapshot';
 /**
@@ -22,6 +23,7 @@ export declare class GIGeom {
     selected: Map<Number, TEntTypeIdx[]>;
     _geom_maps: IGeomMaps;
     imp_exp: GIGeomImpExp;
+    sim_imp_exp: SIMGeomImpExp;
     add: GIGeomAdd;
     del_vert: GIGeomDelVert;
     edit_topo: GIGeomEditTopo;

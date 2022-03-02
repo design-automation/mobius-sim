@@ -231,11 +231,6 @@ export interface IGeomJSONData {
     coll_childs: number[][];
     selected: Map<Number, TEntTypeIdx[]>;
 }
-export interface IAttribJSONData {
-    name: string;
-    data_type: EAttribDataTypeStrs;
-    data: TEntAttribValuesArr;
-}
 export interface IAttribsJSONData {
     posis: IAttribJSONData[];
     verts: IAttribJSONData[];
@@ -247,5 +242,68 @@ export interface IAttribsJSONData {
     colls: IAttribJSONData[];
     model: TModelAttribValuesArr;
 }
+export interface IAttribJSONData {
+    name: string;
+    data_type: EAttribDataTypeStrs;
+    data: TEntAttribValuesArr;
+}
 export declare type TEntAttribValuesArr = Array<[TAttribDataTypes, number[]]>;
 export declare type TModelAttribValuesArr = Array<[string, TAttribDataTypes]>;
+export interface ISIMRenumMaps {
+    posis: Map<number, number>;
+    verts: Map<number, number>;
+    edges: Map<number, number>;
+    wires: Map<number, number>;
+    points: Map<number, number>;
+    plines: Map<number, number>;
+    pgons: Map<number, number>;
+    colls: Map<number, number>;
+}
+export interface IModelSIMData {
+    type: string;
+    version: string;
+    geometry: IGeomSIMData;
+    attributes: IAttribsSIMData;
+}
+export interface IGeomSIMData {
+    num_posis: number;
+    points: number[];
+    plines: number[][];
+    pgons: number[][][];
+    coll_pgons: number[][];
+    coll_plines: number[][];
+    coll_points: number[][];
+    coll_childs: number[][];
+}
+export interface IAttribsSIMData {
+    posis: IAttribSIMData[];
+    verts: IAttribSIMData[];
+    edges: IAttribSIMData[];
+    wires: IAttribSIMData[];
+    points: IAttribSIMData[];
+    plines: IAttribSIMData[];
+    pgons: IAttribSIMData[];
+    colls: IAttribSIMData[];
+    model: TModelAttribValuesArr;
+}
+export interface IAttribSIMData {
+    name: string;
+    data_type: EAttribDataTypeStrs;
+    data_vals: TAttribValuesArr;
+    data_ents: TAttribEntsArr;
+}
+export declare type TAttribValuesArr = Array<TAttribDataTypes>;
+export declare type TAttribEntsArr = Array<number[]>;
+export interface IGeomData {
+    num_posis: number;
+    verts: TVert[];
+    edges: TEdge[];
+    wires: TWire[];
+    points: TPoint[];
+    plines: TPline[];
+    pgons: TPgon[];
+    coll_pgons: number[][];
+    coll_plines: number[][];
+    coll_points: number[][];
+    coll_childs: number[][];
+}

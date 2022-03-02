@@ -69,6 +69,15 @@ export declare class GIModel {
      */
     exportGI(ents: TEntTypeIdx[]): string;
     /**
+     * Import a SIM model.
+     * @param meta
+     */
+    importSIM(model_json_data_str: string): TEntTypeIdx[];
+    /**
+     * Export a SIM model.
+     */
+    exportSIM(ents: TEntTypeIdx[]): string;
+    /**
      * Set the meta data object.
      * Data is not copied.
      * @param meta
