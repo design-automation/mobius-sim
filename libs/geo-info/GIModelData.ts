@@ -1,6 +1,6 @@
 import { GIGeom } from './geom/GIGeom';
 import { GIAttribs } from './attribs/GIAttribs';
-import { IModelJSONData, EEntType, EAttribNames, TEntTypeIdx, IEntSets, IRenumMaps, ISIMRenumMaps } from './common';
+import { IModelJSONData, EEntType, EAttribNames, TEntTypeIdx, IEntSets, IRenumMaps, ISIMRenumMaps, IGeomData } from './common';
 import { IModelSIMData } from './common';
 import { GIModelComparator } from './GIModelComparator';
 import { GIModel } from './GIModel';
@@ -126,9 +126,10 @@ export class GIModelData {
             );
         }
         // get the renum maps for the imprted data
-        const renum_maps: ISIMRenumMaps = this.geom.sim_imp_exp.importSIMRenum(model_data.geometry);
+        const geom_data: IGeomData = this.geom.sim_imp_exp.importReconstructTopo(model_data.geometry)
+        const renum_maps: ISIMRenumMaps = this.geom.sim_imp_exp.importSIMRenum(geom_data);
         // import the data
-        this.geom.sim_imp_exp.importSIM(model_data.geometry, renum_maps);
+        this.geom.sim_imp_exp.importSIM(geom_data, renum_maps);
         this.attribs.sim_imp_exp.importSIM(model_data.attributes, renum_maps);
         // triangulate
         renum_maps.pgons.forEach( (new_ent_i, _) => this.geom.edit_pgon.triPgons(new_ent_i) );

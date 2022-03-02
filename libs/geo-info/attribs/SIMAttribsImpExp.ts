@@ -106,31 +106,39 @@ export class SIMAttribsImpExp {
             }
         });
         this.modeldata.attribs.attribs_maps.get(ssid).pt.forEach( attrib => {
-            const attrib_data: IAttribSIMData = attrib.getSIMData(ent_sets.pt);
-            if (attrib_data !== null) {
-                this._remapEntAttribData(attrib_data, renum_maps.points);
-                data.points.push(attrib_data);
+            if (attrib.getName()[0] !== '_') {
+                const attrib_data: IAttribSIMData = attrib.getSIMData(ent_sets.pt);
+                if (attrib_data !== null) {
+                    this._remapEntAttribData(attrib_data, renum_maps.points);
+                    data.points.push(attrib_data);
+                }
             }
         });
         this.modeldata.attribs.attribs_maps.get(ssid).pl.forEach( attrib => {
-            const attrib_data: IAttribSIMData = attrib.getSIMData(ent_sets.pl);
-            if (attrib_data !== null) {
-                this._remapEntAttribData(attrib_data, renum_maps.plines);
-                data.plines.push(attrib_data);
+            if (attrib.getName()[0] !== '_') {
+                const attrib_data: IAttribSIMData = attrib.getSIMData(ent_sets.pl);
+                if (attrib_data !== null) {
+                    this._remapEntAttribData(attrib_data, renum_maps.plines);
+                    data.plines.push(attrib_data);
+                }
             }
         });
         this.modeldata.attribs.attribs_maps.get(ssid).pg.forEach( attrib => {
-            const attrib_data: IAttribSIMData = attrib.getSIMData(ent_sets.pg);
-            if (attrib_data !== null) {
-                this._remapEntAttribData(attrib_data, renum_maps.pgons);
-                data.pgons.push(attrib_data);
+            if (attrib.getName()[0] !== '_') {
+                const attrib_data: IAttribSIMData = attrib.getSIMData(ent_sets.pg);
+                if (attrib_data !== null) {
+                    this._remapEntAttribData(attrib_data, renum_maps.pgons);
+                    data.pgons.push(attrib_data);
+                }
             }
         });
         this.modeldata.attribs.attribs_maps.get(ssid).co.forEach( attrib => {
-            const attrib_data: IAttribSIMData = attrib.getSIMData(ent_sets.co);
-            if (attrib_data !== null) {
-                this._remapEntAttribData(attrib_data, renum_maps.colls);
-                data.colls.push(attrib_data);
+            if (attrib.getName()[0] !== '_') {
+                const attrib_data: IAttribSIMData = attrib.getSIMData(ent_sets.co);
+                if (attrib_data !== null) {
+                    this._remapEntAttribData(attrib_data, renum_maps.colls);
+                    data.colls.push(attrib_data);
+                }
             }
         });
         data.model = Array.from(this.modeldata.attribs.attribs_maps.get(ssid).mo);

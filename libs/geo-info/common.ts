@@ -312,6 +312,7 @@ export type TModelAttribValuesArr = Array<[string, TAttribDataTypes]>;
 // SIM RENUM
 // ================================================================================================
 
+// no tris
 export interface ISIMRenumMaps {
     posis: Map<number, number>;
     verts: Map<number, number>;
@@ -335,12 +336,9 @@ export interface IModelSIMData {
 }
 export interface IGeomSIMData {
     num_posis: number;
-    verts: TVert[];
-    edges: TEdge[];
-    wires: TWire[];
-    points: TPoint[];
-    plines: TPline[];
-    pgons: TPgon[];
+    points: number[];
+    plines: number[][];
+    pgons: number[][][];
     coll_pgons: number[][];
     coll_plines: number[][];
     coll_points: number[][];
@@ -366,3 +364,17 @@ export interface IAttribSIMData {
 }
 export type TAttribValuesArr = Array<TAttribDataTypes>;
 export type TAttribEntsArr = Array<number[]>;
+
+export interface IGeomData {
+    num_posis: number;
+    verts: TVert[];
+    edges: TEdge[];
+    wires: TWire[];
+    points: TPoint[];
+    plines: TPline[];
+    pgons: TPgon[];
+    coll_pgons: number[][];
+    coll_plines: number[][];
+    coll_points: number[][];
+    coll_childs: number[][];
+}

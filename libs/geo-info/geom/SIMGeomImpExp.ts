@@ -1,5 +1,6 @@
+import { TPosi } from '..';
 import { IGeomMaps, TTri, TEdge, TWire,
-    TPgonTri, TPoint, TPline, TPgon, EEntType, IEntSets, IGeomSIMData, ISIMRenumMaps } from '../common';
+    TPgonTri, TPoint, TPline, TPgon, EEntType, IEntSets, IGeomSIMData, ISIMRenumMaps, TVert, IGeomData } from '../common';
 import { GIModelData } from '../GIModelData';
 
 /**
@@ -16,10 +17,74 @@ export class SIMGeomImpExp {
         this._geom_maps = geom_maps;
     }
     /**
+     * Reconstruct the topology data, adding vertsm edges, wires.
+     * @param geom_data The data from the SIM file
+     */
+    public importReconstructTopo( geom_data: IGeomSIMData ): IGeomData {
+        // reconstruct verts, edges, wires base don the list of positions in SIM
+        const verts: TVert[] = [];
+        const edges: TEdge[] = [];
+        const wires: TWire[] = [];
+        const points: TPoint[] = [];
+        const plines: TPline[] = [];
+        const pgons: TPgon[] = [];
+        // reconstruct points
+        for (const point of geom_data.points) {
+            points.push( verts.push(point) - 1 );
+        }
+        // reconstruct polylines
+        for (const pline of geom_data.plines) {
+            const closed: boolean = pline[0] == pline[pline.length - 1];
+            const num_verts: number = closed ? pline.length - 1 : pline.length;
+            const verts_i: number[] = [];
+            for (let i = 0; i < num_verts; i++) {
+                verts_i.push(verts.push(pline[i]) - 1)
+            }
+            const edges_i: number[] = [];
+            for (let i = 0; i < num_verts - 1; i++) {
+                edges_i.push(edges.push([verts_i[i], verts_i[i+1]]) - 1)
+            }
+            if (closed) {
+                edges_i.push(edges.push([verts_i[num_verts - 1], verts_i[0]]) - 1)
+            }
+            plines.push( wires.push(edges_i) - 1 );
+        }
+        // reconstruct polygons
+        for (const pgon of geom_data.pgons) {
+            const wires_i: number[] = []
+            for (const wire of pgon) {
+                const verts_i: number[] = [];
+                for (let i = 0; i < wire.length; i++) {
+                    verts_i.push(verts.push(wire[i]) - 1)
+                }
+                const edges_i: number[] = [];
+                for (let i = 0; i < verts_i.length - 1; i++) {
+                    edges_i.push(edges.push([verts_i[i], verts_i[i+1]]) - 1)
+                }
+                edges_i.push(edges.push([verts_i[verts_i.length - 1], verts_i[0]]) - 1)
+                wires_i.push ( wires.push(edges_i) - 1 );
+            }
+            pgons.push( wires_i );
+        }
+        return {
+            num_posis: geom_data.num_posis,
+            verts: verts,
+            edges: edges,
+            wires: wires,
+            points: points,
+            plines: plines,
+            pgons: pgons,
+            coll_pgons: geom_data.coll_pgons,
+            coll_plines: geom_data.coll_plines,
+            coll_points: geom_data.coll_points,
+            coll_childs: geom_data.coll_childs
+        }
+    }
+    /**
      * Import GI data into this model, and renumber teh entities in the process.
      * @param other_geom_maps The data to import
      */
-    public importSIMRenum( geom_data: IGeomSIMData ): ISIMRenumMaps {
+    public importSIMRenum( geom_data: IGeomData ): ISIMRenumMaps {
         // positions
         const renum_posis_map: Map<number, number> = new Map();
         for (let i = 0; i < geom_data.num_posis; i++) {
@@ -77,7 +142,7 @@ export class SIMGeomImpExp {
      * Import GI data into this model
      * @param other_geom_maps The geom_arrays of the other model.
      */
-    public importSIM(geom_data: IGeomSIMData, renum_maps: ISIMRenumMaps): void {
+    public importSIM(geom_data: IGeomData, renum_maps: ISIMRenumMaps): void {
         const ssid: number = this.modeldata.active_ssid;
         // posis->verts, create empty []
         for (let i = 0; i < geom_data.num_posis; i++) {
@@ -95,20 +160,6 @@ export class SIMGeomImpExp {
             // up
             this._geom_maps.up_posis_verts.get(other_posi_i).push(other_vert_i);
         }
-        // // add triangles to model
-        // for (let i = 0; i < geom_data.tris.length; i++) {
-        //     const other_tri_i: number = renum_maps.tris.get(i);
-        //     const other_verts_i: TTri = geom_data.tris[i].map(other_vert_i => renum_maps.verts.get(other_vert_i) ) as TTri;
-        //     // down
-        //     this._geom_maps.dn_tris_verts.set(other_tri_i, other_verts_i);
-        //     // up
-        //     other_verts_i.forEach( vert_i => {
-        //         if (!this._geom_maps.up_verts_tris.has(vert_i)) {
-        //             this._geom_maps.up_verts_tris.set(vert_i, []);
-        //         }
-        //         this._geom_maps.up_verts_tris.get(vert_i).push(other_tri_i);
-        //     });
-        // }
         // add edges to model
         for (let i = 0; i < geom_data.edges.length; i++) {
             const other_edge_i: number = renum_maps.edges.get(i);
@@ -177,15 +228,6 @@ export class SIMGeomImpExp {
             other_wires_i.forEach( wire_i => {
                 this._geom_maps.up_wires_pgons.set(wire_i, other_pgon_i);
             });
-            // // create the triangles
-            // // geom_data.pgontris[i].map(other_tri_i => renum_maps.tris.get(other_tri_i) ) as TPgonTri;
-            // const other_tris_i: TPgonTri = this.modeldata.geom.add._addTris(other_wires_i[0], other_wires_i.slice(1));
-            // // tri down
-            // this._geom_maps.dn_pgons_tris.set(other_pgon_i, other_tris_i);
-            // // tri up
-            // other_tris_i.forEach( tri_i => {
-            //     this._geom_maps.up_tris_pgons.set(tri_i, other_pgon_i);
-            // });
             // timestamp
             this.modeldata.updateEntTs(EEntType.PGON, other_pgon_i);
             // snapshot
@@ -305,39 +347,37 @@ export class SIMGeomImpExp {
     public exportSIM(ent_sets: IEntSets, renum_maps: ISIMRenumMaps): IGeomSIMData {
         const data: IGeomSIMData = {
             num_posis: 0,
-            verts: [], // verts_i: [],
-            edges: [], // edges_i: [],
-            wires: [], // wires_i: [],
-            points: [], // points_i: [],
-            plines: [], // plines_i: [],
-            pgons: [],  // pgons_i: [],
-            coll_pgons: [], coll_plines: [], coll_points: [], coll_childs: [] // colls_i: [],
+            points: [],
+            plines: [],
+            pgons: [],
+            coll_pgons: [], coll_plines: [], coll_points: [], coll_childs: []
         };
         // posis
         data.num_posis = renum_maps.posis.size;
-        // verts
-        ent_sets._v.forEach( ent_i => {
-            data.verts.push(renum_maps.posis.get(this._geom_maps.dn_verts_posis.get(ent_i)) );
-        });
-        // edges
-        ent_sets._e.forEach( ent_i => {
-            data.edges.push(this._geom_maps.dn_edges_verts.get(ent_i).map(vert_i => renum_maps.verts.get(vert_i)) as TEdge );
-        });
-        // wires
-        ent_sets._w.forEach( ent_i => {
-            data.wires.push(this._geom_maps.dn_wires_edges.get(ent_i).map(edge_i => renum_maps.edges.get(edge_i)) as TWire );
-        });
-        // points
+        // points -> posis
         ent_sets.pt.forEach( ent_i => {
-            data.points.push(renum_maps.verts.get(this._geom_maps.dn_points_verts.get(ent_i)) );
+            const posi_i: number = this.modeldata.geom.nav.navAnyToPosi(EEntType.POINT, ent_i)[0]
+            data.points.push(renum_maps.posis.get( posi_i ));
         });
-        // plines
+        // plines -> posis
         ent_sets.pl.forEach( ent_i => {
-            data.plines.push(renum_maps.wires.get(this._geom_maps.dn_plines_wires.get(ent_i)) );
+            const posis_i: number[] = this.modeldata.geom.nav.navAnyToPosi(EEntType.PLINE, ent_i);
+            if (this.modeldata.geom.query.isWireClosed(this.modeldata.geom.nav.navPlineToWire(ent_i))) {
+                posis_i.push(posis_i[0])
+            }
+            const remapped_posis: number[] = posis_i.map( posi_i => renum_maps.posis.get( posi_i ) );
+            data.plines.push( remapped_posis );
         });
-        // pgons
+        // pgons -> posis
         ent_sets.pg.forEach( ent_i => {
-            data.pgons.push(this._geom_maps.dn_pgons_wires.get(ent_i).map(wire_i => renum_maps.wires.get(wire_i)) );
+            const wires_i: TPgon = this._geom_maps.dn_pgons_wires.get(ent_i);
+            const pgon_posis_i: number[][] = [];
+            for (const wire_i of wires_i) {
+                const posis_i: number[] = this.modeldata.geom.nav.navAnyToPosi(EEntType.WIRE, wire_i);
+                const remapped_posis: number[] = posis_i.map( posi_i => renum_maps.posis.get( posi_i ) );
+                pgon_posis_i.push(remapped_posis);
+            }
+            data.pgons.push( pgon_posis_i );
         });
         // colls
         ent_sets.co.forEach( ent_i => {
