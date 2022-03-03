@@ -342,7 +342,7 @@ export interface IGeomSIMData {
     coll_pgons: number[][];
     coll_plines: number[][];
     coll_points: number[][];
-    coll_childs: number[][];
+    coll_colls: number[][];
 }
 export interface IAttribsSIMData {
     posis: IAttribSIMData[];
@@ -359,8 +359,8 @@ export interface IAttribsSIMData {
 export interface IAttribSIMData {
     name: string;
     data_type: EAttribDataTypeStrs;
-    data_vals: TAttribValuesArr;
-    data_ents: TAttribEntsArr;
+    values: TAttribValuesArr;
+    entities: TAttribEntsArr;
 }
 export type TAttribValuesArr = Array<TAttribDataTypes>;
 export type TAttribEntsArr = Array<number[]>;
@@ -376,5 +376,5 @@ export interface IGeomData {
     coll_pgons: number[][];
     coll_plines: number[][];
     coll_points: number[][];
-    coll_childs: number[][];
+    coll_colls: number[][];
 }

@@ -74,8 +74,8 @@ export class GIAttribMapBase {
      * If entset is null, then all ents are included.
      */
     public getSIMData(ent_set?: Set<number>): IAttribSIMData {
-        const data_vals: TAttribValuesArr = [];
-        const data_ents: TAttribEntsArr = []
+        const values: TAttribValuesArr = [];
+        const entities: TAttribEntsArr = []
         for (const val_i of this._map_val_i_to_ents_i.keys()) {
             let ents_i: number[];
             if (ent_set === undefined) {
@@ -86,16 +86,16 @@ export class GIAttribMapBase {
                 ents_i = this._mapValToEntsGetArr(val_i).filter( ent_i => ent_set.has(ent_i) );
             }
             if (ents_i.length > 0) {
-                data_vals.push(this._getVal(val_i));
-                data_ents.push(ents_i);
+                values.push(this._getVal(val_i));
+                entities.push(ents_i);
             }
         }
-        if (data_vals.length === 0) { return null; }
+        if (values.length === 0) { return null; }
         return {
             name: this._name,
             data_type: this._data_type,
-            data_vals: data_vals,
-            data_ents: data_ents
+            values: values,
+            entities: entities
         };
     }
     /**

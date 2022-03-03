@@ -77,7 +77,7 @@ export class SIMGeomImpExp {
             coll_pgons: geom_data.coll_pgons,
             coll_plines: geom_data.coll_plines,
             coll_points: geom_data.coll_points,
-            coll_childs: geom_data.coll_childs
+            coll_colls: geom_data.coll_colls
         }
     }
     /**
@@ -246,7 +246,7 @@ export class SIMGeomImpExp {
             const other_pgons_i: number[] = geom_data.coll_pgons[i].map(coll_pgon_i => renum_maps.pgons.get(coll_pgon_i));
             const other_plines_i: number[] = geom_data.coll_plines[i].map(coll_pline_i => renum_maps.plines.get(coll_pline_i));
             const other_points_i: number[] = geom_data.coll_points[i].map(coll_point_i => renum_maps.points.get(coll_point_i));
-            const other_childs_i: number[] = geom_data.coll_childs[i].map(coll_child_i => renum_maps.colls.get(coll_child_i));
+            const other_childs_i: number[] = geom_data.coll_colls[i].map(coll_child_i => renum_maps.colls.get(coll_child_i));
             // set
             this._geom_maps.colls.add(other_coll_i);
             // snapshot (creates new empts sets of pgons, plines, points, and child collections)
@@ -350,7 +350,7 @@ export class SIMGeomImpExp {
             points: [],
             plines: [],
             pgons: [],
-            coll_pgons: [], coll_plines: [], coll_points: [], coll_childs: []
+            coll_pgons: [], coll_plines: [], coll_points: [], coll_colls: []
         };
         // posis
         data.num_posis = renum_maps.posis.size;
@@ -384,7 +384,7 @@ export class SIMGeomImpExp {
             data.coll_pgons.push(this.modeldata.geom.nav.navCollToPgon(ent_i).map(pgon_i => renum_maps.pgons.get(pgon_i)) );
             data.coll_plines.push(this.modeldata.geom.nav.navCollToPline(ent_i).map(pline_i => renum_maps.plines.get(pline_i))  );
             data.coll_points.push(this.modeldata.geom.nav.navCollToPoint(ent_i).map(point_i => renum_maps.points.get(point_i))  );
-            data.coll_childs.push(this.modeldata.geom.nav.navCollToCollChildren(ent_i).map(child_coll_i => renum_maps.colls.get(child_coll_i)) );
+            data.coll_colls.push(this.modeldata.geom.nav.navCollToCollChildren(ent_i).map(child_coll_i => renum_maps.colls.get(child_coll_i)) );
         });
         return data;
     }

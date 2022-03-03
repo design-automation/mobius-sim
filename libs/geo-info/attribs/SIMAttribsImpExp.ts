@@ -158,9 +158,9 @@ export class SIMAttribsImpExp {
         // get or create the attrib
         this.modeldata.attribs.add.addEntAttrib(ent_type, attrib_data.name, attrib_data.data_type);
         // set all values for this attrib
-        for (let i = 0; i < attrib_data.data_vals.length; i++) {
-            const val: TAttribDataTypes = attrib_data.data_vals[i]; 
-            const ents_i: number[] = attrib_data.data_ents[i];
+        for (let i = 0; i < attrib_data.values.length; i++) {
+            const val: TAttribDataTypes = attrib_data.values[i]; 
+            const ents_i: number[] = attrib_data.entities[i];
             const ents2_i: number[] = ents_i.map( ent_i => renum_map.get(ent_i) );
             this.modeldata.attribs.set.setEntsAttribVal(ent_type, ents2_i, attrib_data.name, val);
         }
@@ -172,8 +172,8 @@ export class SIMAttribsImpExp {
      * @param renum_map
      */
     private _remapEntAttribData(attrib_data: IAttribSIMData, renum_map: Map<number, number>): void {
-        for (let i = 0; i < attrib_data.data_ents.length; i++) {
-            attrib_data.data_ents[i] = attrib_data.data_ents[i] .map(ent_i => renum_map.get(ent_i));
+        for (let i = 0; i < attrib_data.entities.length; i++) {
+            attrib_data.entities[i] = attrib_data.entities[i] .map(ent_i => renum_map.get(ent_i));
         }
     }
 }
