@@ -73,6 +73,15 @@ export declare class GIAttribsGetVal {
      */
     getEntAttribVal(ent_type: EEntType, ents_i: number | number[], name: string): TAttribDataTypes | TAttribDataTypes[];
     /**
+     * Get an array of unique values.
+     * \n
+     * If the attribute does not exist, throw an error.
+     * \n
+     * @param ent_type
+     * @param name
+     */
+    getEntAttribVals(ent_type: EEntType, name: string): TAttribDataTypes[];
+    /**
      * Get an entity attrib value in a list.
      * \n
      * If the attribute does not exist, throw error

@@ -80,6 +80,11 @@ export declare class GIAttribMapBase {
      */
     getEnts(): number[];
     /**
+     * Returns a list of unique values.
+     * Note that this may include deleted ents.
+     */
+    getVals(): TAttribDataTypes[];
+    /**
      * Gets the value for a given entity, or an array of values given an array of entities.
      * \n
      * Returns undefined if the entity does not exist in this map.

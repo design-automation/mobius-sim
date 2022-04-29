@@ -175,6 +175,13 @@ export class GIAttribMapBase {
         return Array.from(this._map_ent_i_to_val_i.keys());
     }
     /**
+     * Returns a list of unique values.
+     * Note that this may include deleted ents.
+     */
+     public getVals(): TAttribDataTypes[] {
+        return Array.from(this._map_val_i_to_ents_i.keys()).map(val_i => this._getVal(val_i));
+    }
+    /**
      * Gets the value for a given entity, or an array of values given an array of entities.
      * \n
      * Returns undefined if the entity does not exist in this map.

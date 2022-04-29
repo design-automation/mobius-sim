@@ -135,6 +135,22 @@ export class GIAttribsGetVal {
         return attrib.getEntVal(ents_i as number);
     }
     /**
+     * Get an array of unique values.
+     * \n
+     * If the attribute does not exist, throw an error.
+     * \n
+     * @param ent_type
+     * @param name
+     */
+    public getEntAttribVals(ent_type: EEntType, name: string): TAttribDataTypes[] {
+        const ssid: number = this.modeldata.active_ssid;
+        const attribs_maps_key: string = EEntTypeStr[ent_type];
+        const attribs: Map<string, GIAttribMapBase> = this.modeldata.attribs.attribs_maps.get(ssid)[attribs_maps_key];
+        const attrib: GIAttribMapBase = attribs.get(name);
+        if (attrib === undefined) { throw new Error('Attribute does not exist.'); }
+        return attrib.getVals();
+    }
+    /**
      * Get an entity attrib value in a list.
      * \n
      * If the attribute does not exist, throw error
@@ -176,5 +192,4 @@ export class GIAttribsGetVal {
         }
         return attrib.getEntVal(ents_i as number)[key];
     }
-
 }
