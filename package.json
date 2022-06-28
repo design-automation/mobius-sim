@@ -37,7 +37,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build0": "tsc && tsc-alias",
     "build": "npm run build-del && npm run build-mjs && npm run build-cjs && fixup.sh",
-    "build-del": "del /s /q build\\*",
+    "build-del": "if exist build del /s /q build\\*",
     "build-mjs": "tsc -p tsconfig-mjs.json",
     "build-cjs": "tsc -p tsconfig-cjs.json",
     "rollup": "rollup --config rollup.config.js",
