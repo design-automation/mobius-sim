@@ -1,6 +1,6 @@
 {
   "name": "@design-automation/mobius-sim",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "description": "Mobius Spatial Information Model",
   "main": "build/cjs/index.js",
   "module": "build/mjs/index.js",
@@ -16,7 +16,7 @@
     "lodash": "^4.17.21",
     "mathjs": "^5.10.3",
     "proj4": "^2.5.0",
-    "three": "^0.140.2",
+    "three": "^0.137.5",
     "underscore": "^1.13.1"
   },
   "devDependencies": {
@@ -25,7 +25,7 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/lodash": "^4.14.175",
     "@types/node": "^16.0.0",
-    "@types/three": "^0.140.0",
+    "@types/three": "^0.137.0",
     "@types/underscore": "^1.8.14",
     "@types/webgl2": "0.0.5",
     "rollup": "^2.60.0",
@@ -41,7 +41,7 @@
     "build-mjs": "tsc -p tsconfig-mjs.json",
     "build-cjs": "tsc -p tsconfig-cjs.json",
     "rollup": "rollup --config rollup.config.js",
-    "deploy": "npm run build && npm publish --access public",
+    "deploy": "npm i && npm run build && npm publish --access public",
     "typedoc": "typedoc --exclude **/*.spec.ts --json typedoc-json/doc.json src/core/modules"
   },
   "repository": {
