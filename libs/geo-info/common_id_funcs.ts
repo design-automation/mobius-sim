@@ -42,7 +42,7 @@ export function idsMakeFromIdxs(ent_type: EEntType, idxs: number|number[]|number
 // ============================================================================
 export function idBreak(id: TId): TEntTypeIdx {
     const ent: TEntTypeIdx = ID_MAP.get(id);
-    if (ent === undefined) { throw new Error('The entity ID "' + id + '" is not a valid entity ID.'); }
+    if (ent === undefined) { throw new Error('The entity ID "' + id + '" was never created.'); }
     return ent;
 }
 export function idsBreak(id: TId|TId[]|TId[][]|TId[][][]): TEntTypeIdx|TEntTypeIdx[]|TEntTypeIdx[][]|TEntTypeIdx[][][] {
