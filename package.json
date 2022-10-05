@@ -29,6 +29,7 @@
     "@types/underscore": "^1.8.14",
     "@types/webgl2": "0.0.5",
     "rollup": "^2.60.0",
+    "rollup-plugin-polyfill-node": "^0.8.0",
     "tsc-alias": "^1.6.2",
     "typedoc": "^0.22.5",
     "typescript": "^4.4.3"
@@ -38,7 +39,7 @@
     "build0": "tsc && tsc-alias",
     "build": "npm run build-del && npm run build-mjs && npm run build-cjs && fixup.sh",
     "build-del": "if exist build del /s /q build && rmdir /s /q build",
-    "build-mjs": "tsc -p tsconfig-mjs.json",
+    "build-mjs": "rollup --config rollup-mjs.config.js",
     "build-cjs": "tsc -p tsconfig-cjs.json",
     "rollup": "rollup --config rollup.config.js",
     "deploy": "npm i && npm run build && npm publish --access public",

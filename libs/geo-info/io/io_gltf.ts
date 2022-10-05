@@ -48,15 +48,22 @@ export async function exportGltf(model: GIModel, entities: TEntTypeIdx[], ssid: 
         onlyVisible: false
     };
 
+
     // exporter parsing -> promise
     const p = new Promise<string>(resolve => {
-        gltfExporter.parse( scene, function ( result ) {
+        const onDone = (result) => {
             for (const material of result['materials']) {
                 material['doubleSided'] = true;
             }
             const output = JSON.stringify( result, null, 2 );
-            resolve(output);
-        }, options );
+            console.log(output);
+            resolve(output)
+        }
+        const onError = (err) => {
+            console.log('error:', err);
+            resolve('')
+        }
+        gltfExporter.parse( scene, onDone, onError, options );
     });
     return p;
 }
